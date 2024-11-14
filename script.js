@@ -9,12 +9,40 @@ function register() {
         return;
     }
 
-    // Mock registration success - switch to the voting section
-    document.getElementById("registration-section").style.display = "none";
-    document.getElementById("vote-section").style.display = "block";
-    document.getElementById("registrationMessage").innerText = "";
+    // Check if the user has already voted
+    if (localStorage.getItem("hasVoted") === "true") {
+        showThankYouSection();
+    } else {
+        document.getElementById("registration-section").style.display = "none";
+        document.getElementById("vote-section").style.display = "block";
+        document.getElementById("registrationMessage").innerText = "";
+    }
 }
 
-function submitVote(option) {
-    document.getElementById("response").innerText = `You voted for ${option}! Thank you!`;
+let selectedVote = "";
+
+function confirmVote(candidate) {
+    selectedVote = candidate;
+    document.getElementById("vote-section").style.display = "none";
+    document.getElementById("confirmation-section").style.display = "block";
+    document.getElementById("selectedCandidate").innerText = `You selected: ${candidate}`;
+}
+
+function submitVote() {
+    // Record the vote and prevent future votes
+    localStorage.setItem("hasVoted", "true");
+    localStorage.setItem("voteChoice", selectedVote);
+
+    document.getElementById("confirmation-section").style.display = "none";
+    showThankYouSection();
+}
+
+function cancelVote() {
+    // Go back to the voting section
+    document.getElementById("confirmation-section").style.display = "none";
+    document.getElementById("vote-section").style.display = "block";
+}
+
+function showThankYouSection() {
+    document.getElementById("thank-you-section").style.display = "block";
 }
