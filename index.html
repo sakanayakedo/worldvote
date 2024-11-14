@@ -123,9 +123,20 @@
 
         <div id="vote-section" style="display: none;">
             <h2>Who would you like to vote for?</h2>
-            <button class="button" onclick="submitVote('Donald J. Trump')">Donald J. Trump</button>
-            <button class="button" onclick="submitVote('Kamala Harris')">Kamala Harris</button>
-            <p id="response"></p>
+            <button class="button" onclick="confirmVote('Donald J. Trump')">Donald J. Trump</button>
+            <button class="button" onclick="confirmVote('Kamala Harris')">Kamala Harris</button>
+        </div>
+
+        <div id="confirmation-section" style="display: none;">
+            <h2>Are you sure this is who you want to vote for?</h2>
+            <p id="selectedCandidate"></p>
+            <button class="button" onclick="submitVote()">Yes, Confirm</button>
+            <button class="button" onclick="cancelVote()">Cancel</button>
+        </div>
+
+        <div id="thank-you-section" style="display: none;">
+            <h2>Thank you for voting!</h2>
+            <p>Your vote has been recorded and you will not be able to vote again.</p>
         </div>
     </div>
 
