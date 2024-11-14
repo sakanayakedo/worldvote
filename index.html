@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Vote Poll</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background: radial-gradient(circle, #000428, #004e92);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1, h2 {
+            color: #e0e6ed;
+            text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #a9b3c1;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .button {
+            font-size: 16px;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #1f6f8b;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #278ea5;
+        }
+
+        /* Background Stars */
+        .stars {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            box-shadow: 1000px 2000px #ffffff, 2000px 1000px #ffffff, 3000px 1500px #ffffff;
+            animation: twinkling 2s infinite;
+        }
+
+        /* Background Star Animation */
+        @keyframes twinkling {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+                margin-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+
+    <div class="container">
+        <h1>World Vote Poll</h1>
+
+        <div id="registration-section">
+            <h2>Register to Vote</h2>
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" required>
+            </div>
+            <button class="button" onclick="register()">Register</button>
+            <p id="registrationMessage"></p>
+        </div>
+
+        <div id="vote-section" style="display: none;">
+            <h2>Who would you like to vote for?</h2>
+            <button class="button" onclick="submitVote('Donald J. Trump')">Donald J. Trump</button>
+            <button class="button" onclick="submitVote('Kamala Harris')">Kamala Harris</button>
+            <p id="response"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
